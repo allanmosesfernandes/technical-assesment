@@ -21,6 +21,7 @@
 - **Runtime validation via a schema library** — the API route currently hand-validates `billingPeriod` with an inline equality check. With a library like Zod I'd define one schema for the request body that gives me runtime parsing, narrowed TypeScript types, and useful error messages for free.
 - **Single source of truth for prices** — the monthly/annual prices are duplicated between `app/page.tsx` (for display) and `lib/checkout.ts` (for the authoritative server-side value). The duplication is deliberate (server stays authoritative even if a malicious client meddles with the imports) but I'd extract a `lib/pricing.ts` module and discipline the boundary in code review rather than via copy-paste.
 - **Full WAI-ARIA radio group keyboard support** — I added `role="radiogroup"` + `role="radio"` + `aria-checked` to the billing toggle, but didn't implement arrow-key navigation between options. A production-grade implementation would either handle that manually or swap to a primitive like Radix UI's `ToggleGroup`.
+- Rewrite tests for this using vitest and playwright
 
 ## Access (HTTP Basic Auth)
 
