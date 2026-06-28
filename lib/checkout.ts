@@ -1,9 +1,7 @@
 import Stripe from 'stripe';
 import type { BillingPeriod } from '@/types/types';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-01-27.acacia',
-});
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const BASE_PRICE_GBP = 99;
 const PLAN_MULTIPLIER = 10;
